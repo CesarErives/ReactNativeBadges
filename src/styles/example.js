@@ -7,7 +7,7 @@ const exampleStyles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: Colors.charade,
     },
-    horizontal: {
+    horizontal:{
         justifyContent: 'space-around',
         alignItems: 'center',
     },

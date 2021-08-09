@@ -1,48 +1,60 @@
-import React from 'react';
-import { Image } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import BadgesStack from './BadgesStack.js'
-import FavoritesStack from '../Favorites/FavoritesStack.js';
-import Colors from '../../res/Colors.js';
+import React from 'react'
+import { Image } from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import BadgesScreen from './BadgesScreen'
+import UserStack from '../UsersScreen/UserStack'
+import Favorites from '../Favorites/Favorites'
+import Colors from '../../res/Colors'
 
-const Tabs = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 const BadgesTabNavigator = () => {
-    return (
-        <Tabs.Navigator
+    return(
+        <Tab.Navigator
             screenOptions={{
                 headerShown: false,
-                tabBarShowLabel: false,
-                tabBarActiveTintColor: '#43FF0D',
-                tabBarInactiveTintColor: Colors.white,
-                tabBarStyle: { backgroundColor: Colors.zircon },
+                headerStyle:{
+                    backgroundColor: Colors.white,
+                    shadowColor: Colors.white,
+                },
+                headerTintColor: Colors.blackPearl,
             }}
         >
-            <Tabs.Screen
-                name="Badge"
-                component={BadgesStack}
+            <Tab.Screen 
+                name="User"
+                component={UserStack}
                 options={{
-                    tabBarIcon: ({ size, color }) => (
-                        <Image
-                            style={{ tintColor: color, width: size, height: size }}
+                    tabBarIcon: ({size, color}) => (
+                            <Image style={{tintColor: color, width: size, height: size}} 
+                            source={require('../../assets/user.png')}
+                        />
+                    ),
+                }}
+            />
+            <Tab.Screen 
+                name="BadgesScreen"
+                component={BadgesScreen}
+                options={{
+                    tabBarIcon: ({size, color}) => (
+                            <Image style={{tintColor: color, width: size, height: size}} 
                             source={require('../../assets/home.png')}
                         />
                     ),
                 }}
             />
-            <Tabs.Screen
+            <Tab.Screen 
                 name="Favorites"
-                component={FavoritesStack}
+                component={Favorites}
                 options={{
-                    tabBarIcon: ({ size, color }) => (
-                        <Image
-                            style={{ tintColor: color, width: size, height: size }}
+                    tabBarIcon: ({size, color}) => (
+                            <Image style={{tintColor: color, width: size, height: size}} 
                             source={require('../../assets/notFavorite.png')}
                         />
                     ),
                 }}
             />
-        </Tabs.Navigator>
+        </Tab.Navigator>
     );
 };
 

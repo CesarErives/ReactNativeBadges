@@ -1,6 +1,2 @@
-let URLS = {
-    badges_url: 'https://example-badge.herokuapp.com',
-    
-};
-
-export default URLS;
+const BASE_URL = 'https://example-badge.herokuapp.com/';
+export default BASE_URL;
